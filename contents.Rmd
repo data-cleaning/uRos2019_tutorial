@@ -1,0 +1,20 @@
+---
+title: "contents"
+author: "Mark van der Loo, Edwinde Jonge"
+date: "September 12, 2018"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Contents
+
+- Data validation and SVC (Mark)
+- Error localization (Edwin)
+- Rule management (Edwin)
+- Introduction to imputation (Mark)
+
+
+
