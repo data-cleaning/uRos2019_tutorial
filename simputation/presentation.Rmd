@@ -1,10 +1,13 @@
 ---
 title: "An introduction to imputation"
 author: "Mark van der Loo and Edwin de Jonge"
-date: "uRos2018"
+date: "uRos2019"
 output:
   beamer_presentation:
     fig_caption: false
+    include:
+      in_header: ../00tex/presheader.tex
+classoption: "aspectratio=169"
 ---
 
 
@@ -226,7 +229,7 @@ retailers %>%
 
 ## Imputation and univariate distribution
 
-```{r,echo=FALSE}
+```{r,echo=FALSE, fig.height=5}
 set.seed(1)
 x <- rnorm(1000)
 y <- x
@@ -241,7 +244,7 @@ hist(x,main="Imputating the mean",breaks=50,las=1)
 
 ## Imputation and bivariate distribution
 
-```{r,echo=FALSE}
+```{r,echo=FALSE,fig.height=5}
 par(mfrow=c(1,2))
 X <- rnorm(1000)
 Y <- X + rnorm(1000,sd = 0.2)
@@ -279,7 +282,7 @@ $$
 ## Adding a random residual
 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.height=5}
 par(mfrow=c(1,2))
 cols <- rep("black",1000)
 cols[i] <- "red"

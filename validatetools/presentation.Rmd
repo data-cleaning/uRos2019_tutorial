@@ -2,10 +2,13 @@
 title: "Validatetools"
 subtitle: "Validatetools: Check and resolve contradictory rule sets" 
 author: "Edwin de Jonge en Mark van der Loo"
-date: "uRos2018 Tutorial Session, The Hague"
+date: "uRos2019 Tutorial Session, The Hague"
 output:
   beamer_presentation:
     keep_tex: no
+    include:
+      in_header: ../00tex/presheader.tex
+classoption: "aspectratio=169"
 ---
 
 ```{r setup, include=FALSE}

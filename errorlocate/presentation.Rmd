@@ -6,6 +6,9 @@ date: "uRos2018 Tutorial Session, The Hague"
 output:
   beamer_presentation:
     keep_tex: no
+    include:
+      in_header: ../00tex/presheader.tex
+classoption: "aspectratio=169"
 ---
 
 ```{r setup, include=FALSE}
@@ -25,7 +28,7 @@ install.packages("errorlocate")
 ## Finding errors in records.
 
 \begin{center}
-\includegraphics[width=\textwidth]{fig/valuechain}
+\includegraphics[width=\textwidth]{../validation/fig/valuechain}
 \end{center}
 
 ## Validation rules?
