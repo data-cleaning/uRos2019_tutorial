@@ -2,7 +2,7 @@
 title: "Finding and handling data errors"
 subtitle: "errorlocate" 
 author: "Edwin de Jonge and Mark van der Loo"
-date: "uRos2018 Tutorial Session, The Hague"
+date: "uRos2019 Tutorial Session, The Hague"
 output:
   beamer_presentation:
     keep_tex: no

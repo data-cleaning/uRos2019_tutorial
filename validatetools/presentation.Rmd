@@ -2,7 +2,7 @@
 title: "Validatetools"
 subtitle: "Validatetools: Check and resolve contradictory rule sets" 
 author: "Edwin de Jonge en Mark van der Loo"
-date: "uRos2019 Tutorial Session, The Hague"
+date: "uRos2019 Tutorial Session, Bucharest"
 output:
   beamer_presentation:
     keep_tex: no
@@ -72,8 +72,10 @@ A lot of datacleaning packages are using validate rules to facilitate their work
 
 ## Growing pains
 
-- using explicit rules is great, but when succesful create new and 
+using explicit rules is great, but when succesful create new and 
 unforeseen issues.
+
+<!--
 
 ### Issues:
 
@@ -88,14 +90,14 @@ unforeseen issues.
   - What is maximum columns in a dataset you encountered in your office?
   - Can you give an indication of the maximum number of data validity rules that are checked in production process ? 
   - How many persons are involved in checking and maintaining the rules?
+-->
 
-## Issues:
+### At Statistics Netherlands / CBS:
 
-At CBS:
-
-- Datasets with > 100 columns are common.
+- Datasets with > 100 columns/variables are common.
 - Some systems have 100s of rules.
 - Often multiple persons work on rule set.
+- Often specialized rules for sub-domains.
 
 Most of these issues are not technical, but **organisational** and **cognitive**.
 
@@ -128,6 +130,14 @@ Most of these issues are not technical, but **organisational** and **cognitive**
 - One simple option is look at the boundary of allowed values for 
 each variable.
 
+## validatetools methods
+
+- `is_infeasible` => `make_feasible`
+- `detect_redundancy` => `remove_redundancy`
+- `detect_fixed_variables` => `simplify_fixed_variables`
+- `substitute_values`, `simplify_rules`, `simplify_conditional`
+
+<!--
 
 ## Assignment Check boundaries
 
@@ -144,7 +154,9 @@ rules <- validator( age >= 18
 ```
 2) Check this with `validatetools::detect_boundary_num`.
 
-## 
+--> 
+
+## Detect boundaries  
 
 ```{r, eval = FALSE}
 library(validatetools)
@@ -252,16 +264,13 @@ rules <- validator( r1 = if (gender == "male") weight > 50
 substitute_values(rules, gender = "male")
 ```
 
-## Assignment: Can you simplify this one?
+## Assignment: Can you simplify these rules with `validatetools`?
 
-a) 
-
-```{r}
+```{r, eval=FALSE}
 validator( if (income > 0) age >= 16
          , age < 12
         )
 ```
-b) Use `simplify_conditional` to let validatetools do it.
 
 ## 
 
@@ -279,16 +288,18 @@ simplify_conditional(rules)
 
 `simplify_rules` applies all simplification methods to the rule set.
 
-a) If we know that job must be "yes", can you see how this rule set can  be simplified?
+a) Apply `simplify_rules(rules, job = "yes")`
 
 ```{r, eval = FALSE}
 rules <- validator( r1 = job %in% c("yes", "no")
                   , r2 = if (job == "yes") income > 0
                   , r3 = if (age < 16) income == 0
                   )
+
 ```
-b) Apply `simplify_rules(rules, job = "yes")`
-c) Can you do the same using the other simplifying functions?
+
+b) Apply `simplify_rules(rules, age = 10)`
+
 
 
 ## 
@@ -299,6 +310,7 @@ rules <- validator( r1 = job %in% c("yes", "no")
                   , r3 = if (age < 16) income == 0
                   )
 simplify_rules(rules, job = "yes")
+simplify_rules(rules, age = 10)
 ```
 
 ## How does it work?
