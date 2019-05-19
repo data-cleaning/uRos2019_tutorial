@@ -459,17 +459,6 @@ is closest to the prediction of the missing value.
 impute_pmm()
 ```
 
-## Assignment 4
-
-Read in the `irisNA.csv` dataset.
-
-1. Use `impute_knn` to impute `Sepal.Length` and `Sepal.Width`. Use
-`Petal.Length`, `Petal.Width` and `Species` as predictor.
-2. Use a `CART` model to impute `Sepal.Length` with all other variables
-as predictors (see `?impute_cart`)
-3. Use `impute_lm` to impute the mean for `Sepal.Length` (the rhs of the 
-model is `~ 1`).
-
 
 
 
