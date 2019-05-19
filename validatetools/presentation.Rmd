@@ -1,6 +1,6 @@
 ---
-title: "Validatetools"
-subtitle: "Validatetools: Check and resolve contradictory rule sets" 
+title: "Rule management"
+subtitle: "Manage, check and resolve contradictory rule sets" 
 author: "Edwin de Jonge en Mark van der Loo"
 date: "uRos2019 Tutorial Session, Bucharest"
 output:
@@ -70,6 +70,11 @@ A lot of datacleaning packages are using validate rules to facilitate their work
 - `deductive`: deductive **correction**
 - `dcmodify`: deterministic **correction** and **imputation**.
 
+## Rule management
+
+- `validate` allows to store and manage the rules explicitly, external to the data processing.
+- Rules can be stored in a R file, yaml text-file, or a data.frame (e.g. from a data base).
+- Rules can be partitioned in subdomains and be included as needed.
 ## Growing pains
 
 using explicit rules is great, but when succesful create new and 
