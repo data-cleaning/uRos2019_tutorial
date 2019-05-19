@@ -192,11 +192,11 @@ rulez <- validator(.file="myrulez.txt")
 6. Use `as.data.frame` and `View` to convert and display the results.
 7. Make a `plot` of the `validator` object.
 
-
+# A few extra's (if we have time)
 
 ## Domain Specific Language
 
-### Validation DSL
+### Validation _Domain Specific Language_ (DSL)
 
 Any R statement resulting in a `logical`.
 
