@@ -1,7 +1,7 @@
 ---
 title: "An introduction to (s)imputation"
 author: "Mark van der Loo and Edwin de Jonge"
-date: "uRos2019"
+date: "uRos2019, Bucharest"
 output:
   beamer_presentation:
     fig_caption: false

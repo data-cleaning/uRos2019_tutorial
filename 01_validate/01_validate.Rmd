@@ -1,7 +1,7 @@
 ---
 title: "The statistical value chain and data validation"
 author: "Mark van der Loo and Edwin de Jonge"
-date: "uRos2019 Tutorial Session, The Hague"
+date: "uRos2019 Tutorial Session, Bucharest"
 output: 
   beamer_presentation:
     fig_caption: FALSE
