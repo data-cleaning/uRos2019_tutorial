@@ -17,13 +17,6 @@ library(errorlocate)
 library(magrittr)
 ```
 
-## Packages
-
-To run the examples please install:
-
-```{r, eval=FALSE}
-install.packages("errorlocate")
-```
 ## Error localization
 
 Data validation and error localization answer different questions.
