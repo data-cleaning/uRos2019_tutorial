@@ -347,8 +347,8 @@ impute_rlm()
 ```
 
 \begin{picture}(0,0)
-\put(210,-20){
-\includegraphics[height=3.5cm]{fig/psifun.pdf}
+\put(270,50){
+\includegraphics[height=4cm]{fig/psifun.pdf}
 }
 \end{picture}
 
