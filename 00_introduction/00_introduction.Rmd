@@ -1,0 +1,54 @@
+---
+title: "Statistical Data Cleaning for Official Statistics with R"
+author: "Mark van der Loo and Edwin de Jonge"
+date: "uRos2019 Tutorial Session, Bucharest"
+output: 
+  beamer_presentation:
+    fig_caption: FALSE
+    include:
+      in_header: ../00tex/presheader.tex
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+## Tutorial overview
+
+$\;$
+
+### Contents
+
+- Data validation
+- Error localization
+- Imputation
+
+
+### Materials
+
+`github.com/data-cleaning/uRos2019_tutorial`
+
+
+\begin{picture}(0,0)
+\put(280,-20){
+\includegraphics[height=50mm]{fig/sdcr.jpg}
+}
+\end{picture}
+
+### Contact
+
+`mplo@cbs.nl` `@markvdloo` `|` `ejne@cbs.nl` `@edwindjonge` 
+
+
+
+
+
+
+
+
+
+
+
