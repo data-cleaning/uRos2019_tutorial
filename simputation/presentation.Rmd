@@ -1,5 +1,5 @@
 ---
-title: "An introduction to imputation"
+title: "An introduction to (s)imputation"
 author: "Mark van der Loo and Edwin de Jonge"
 date: "uRos2019"
 output:
