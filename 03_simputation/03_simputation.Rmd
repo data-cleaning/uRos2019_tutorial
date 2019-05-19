@@ -36,51 +36,6 @@ library(tidyverse)
 - Take into account when estimating
 - **Impute**
 
-## Missing data mechanisms
-
-### Missing comletely at Random (MCAR)
-
-Missingness is totally random.
-
-### Missing at Random (MAR)
-
-Missingness probability can be modeled by other variables
-
-### Not Missing at Random (NMAR)
-
-Missingness probability depends on missing value.
-
-
-## You can't tell the mechanism from the data
-
-### NMAR can look like MCAR
-
-Given $Y,X$ independent. Remove all $y\geq y^*$. Observer
-'sees' no correlation between missingness and values of $X$: MAR.
-
-
-### NMAR can look like MAR
-
-Given $Y,X$ with $\textsf{Cov}(Y,X)>0$. Remove all 
-$y\geq y^*$. Observer 'sees' that higher $X$ correlates with
-more missings in $Y$: MCAR.
-
-
-
-## Dealing with missing data mechanisms
-
-### Missing comletely at Random (MCAR)
-
-Model-based imputation
-
-### Missing at Random (MAR)
-
-Model-based imputation
-
-### Not Missing at Random (NMAR)
-
-No real solution.
-
 
 ## Imputation methodology
 
@@ -88,9 +43,14 @@ No real solution.
 
 Estimate a value based on observed variables.
 
-### Donor-imputation
+### Donor imputation
 
 Copy a value from a record that you did observe.
+
+### Proxy imputation
+
+Copy or derive a value form other variables.
+
 
 
 ## The simputation package
@@ -312,6 +272,7 @@ ret %>%
 - `add_residual = "observed"`: from observed residuals
 
 Compute the variance of `other.rev` after each option.
+
 
 
 # Five minutes for ten models.
