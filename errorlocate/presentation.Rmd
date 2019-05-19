@@ -2,7 +2,7 @@
 title: "Finding and handling data errors"
 subtitle: "errorlocate" 
 author: "Edwin de Jonge and Mark van der Loo"
-date: "uRos2019 Tutorial Session, The Hague"
+date: "uRos2019 Tutorial Session, Bucharest"
 output:
   beamer_presentation:
     keep_tex: no
@@ -49,7 +49,6 @@ rules <- validator(
 ## Explicit validation rules:
 
 - Give a clear overview what the data must conform to.
-- Can be used to reason about.
 - Can be used to fix/correct data!
 - Find error, and when found correct it.
 
@@ -98,7 +97,7 @@ rules <- validator(
 car_owners <- data.frame(age = 160, driver_license = TRUE)
 ```
 
-Clearly `age` is incorrect, because it violates the second constraint.
+**Clearly `age` is incorrect, because it violates the second constraint.**
 
 ## Data example 2
 
@@ -126,8 +125,7 @@ rules_dl <- validator(
 car_owners <- data.frame(age = 10, driver_license = TRUE)
 ```
 
-_It depends on the quality of `age` and `driver_license`. We can add more weight to `age` if we think
-that variable has better quality._
+**It depends on the quality of `age` and `driver_license`. We can add more weight to `age` if we think that variable has better quality.**
 
 ## Error localization
 
@@ -256,6 +254,9 @@ replace_errors(
              )
 )
 ```
+
+<!--
+
 ## Assignment
 
 a) Use the data set `retailers` from package `validate`.
@@ -296,6 +297,8 @@ errors[w,]
 retailers[w,c("other.rev", "total.rev", "turnover")]
 replace_errors(retailers[w,], rules)
 ```
+
+--> 
 
 ## Internal workings:
 
