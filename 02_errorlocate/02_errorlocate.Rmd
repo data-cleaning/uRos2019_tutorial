@@ -50,8 +50,6 @@ knitr::kable(data.frame(age=10,drivers_licence=TRUE))
 
 Which field or fields would you change?
 
-
-
 ## Error localization
 
 ### Definition
@@ -81,6 +79,45 @@ knitr::kable(data.frame(age=3, married=TRUE, attends="kindergarten"))
 
 Which field or fields would you change?
 
+## Data 2
+
+```{r, eval=FALSE}
+age >= 0, 
+age < 150,
+if (driver_license == TRUE) age >= 16
+```
+
+```{r, echo=FALSE}
+knitr::kable(data.frame(age = 10, driver_license = TRUE))
+```
+
+### Question
+
+Which field or fields would you change?
+
+
+## Assignment
+
+Use `validate` to check the data and find the variable that is incorrect.
+
+## Data 2
+
+```{r, eval=FALSE}
+age >= 0, 
+age < 150,
+if (driver_license == TRUE) age >= 16
+```
+
+```{r, echo=FALSE}
+knitr::kable(data.frame(age = 10, driver_license = TRUE))
+```
+
+### Question
+
+Which field or fields would you change?
+
+**It depends on the quality of `age` and `driver_license`. We can add more weight to `age` if we think that variable has better quality.**
+
 ## Principle of Fellegi and Holt
 
 ###
@@ -95,6 +132,14 @@ all rules, including implied rules, can be satisfied.
 This should be used as a last resort, when no further information on 
 the location of errors is available.
 
+
+## Feligi Holt (FH) formalism:
+
+But there are exceptions...
+
+  - In balance sheets, swapping variables (2 edits) sometimes makes more sense then adjusting one value (1 edit). (see R package:`deducorrect`).
+
+  - In some data,  spreading a surplus or shortage on a variable over many variables is sensible. (see R package: `rspa`).
 
 ## Implied rules?
 
@@ -114,151 +159,6 @@ This implies (substituting profit):
 We need to take into account such _essentially new_ rules (edits) ---unstated 
 relations between variables that can be derived from the explicitly defined rules.
 
-
-<!--
-## Finding errors in records.
-
-\begin{center}
-\includegraphics[width=\textwidth]{../validation/fig/valuechain}
-\end{center}
-
-## Validation rules?
-
-As we saw package `validate` allows to:
-
-- formulate explicit data rule that data must conform to:
-
-```{r}
-library(validate)
-rules <- validator(
-  age >= 0, 
-  age < 150,
-  if (driver_license == TRUE) age >= 16
-)
-```
-
-
-## Explicit validation rules:
-
-- Give a clear overview what the data must conform to.
-- Can be used to fix/correct data!
-- Find error, and when found correct it.
-
-### Note:
-
-- Manual editing is error prone, not reproducible and not feasible for large data sets.
-- Large rule sets have (very) complex behavior, e.g. entangled rules: adjusting one value may 
-invalidate other rules.
-
-## 
-
-### `validate` tells us:
-
-- which **records** are **invalid**
-- which data **rules** are **violated**.
-
-### `errorlocate` tells us:
-
-- which field/**variable**(s) should be fixed to make a record valid.
-
-## Data example
-
-```{r}
-rules <- validator(
-  age >= 0, 
-  age < 150,
-  if (driver_license == TRUE) age >= 16
-)
-
-# invalid data
-car_owners <- data.frame(age = 160, driver_license = TRUE)
-```
-
-Question: _Which variable (likely) is  incorrect? Why?_
-
-## Data example
-
-```{r}
-rules <- validator(
-  age >= 0, 
-  age < 150,
-  if (driver_license == TRUE) age >= 16
-)
-
-# invalid data
-car_owners <- data.frame(age = 160, driver_license = TRUE)
-```
-
-**Clearly `age` is incorrect, because it violates the second constraint.**
-
-## Data example 2
-
-```{r}
-rules <- validator(
-  age >= 0, 
-  age < 150,
-  if (driver_license == TRUE) age >= 16
-)
-
-car_owners <- data.frame(age = 10, driver_license = TRUE)
-```
-
-Question: _Which variable (likely) is  incorrect? Why?_
-
--->
-
-## Data example 2
-
-```{r, eval=FALSE}
-age >= 0, 
-age < 150,
-if (driver_license == TRUE) age >= 16
-```
-
-```{r, echo=FALSE}
-knitr::kable(data.frame(age = 10, driver_license = TRUE))
-```
-
-### Question
-
-Which variable would you adjust?
-
-**It depends on the quality of `age` and `driver_license`. We can add more weight to `age` if we think that variable has better quality.**
-
-## Assignment: 
-
-```{r}
-rules <- validator(
-  if (married == TRUE) age >= 16,
-  if (attends == "kindergarten") age <= 6
-) 
-
-persons <- data.frame( age     = 3
-                     , married = TRUE
-                     , attends = "kindergarten"
-                     )
-```
-
-a) check with `validate` which rules are violated.
-b) What should be changed to this record to "correct" it? Why? 
-
-## Feligi Holt (FH) formalism:
-
-> Find the minimal (weighted) number of variables that cause the invalidation of the data rules.
-
-### 
-
-Makes sense if no further knowledge on the error mechanism is available! 
-
-R package `errorlocate` (second generation of `editrules`) implements FH.
-
-## Feligi Holt (FH) formalism:
-
-But there are exceptions...
-
-  - In balance sheets, swapping variables (2 edits) sometimes makes more sense then adjusting one value (1 edit). (see R package:`deducorrect`).
-
-  - In some data,  spreading a surplus or shortage on a variable over many variables is sensible. (see R package: `rspa`).
 
 ## `errorlocate`
 
@@ -311,6 +211,7 @@ knitr::kable(data.frame( age = 15, married = TRUE
           , attends= "kindergarten"))
 ```
 
+c) You have more confidence in the kindergarden variable: apply a weight of 3 to age in finding the errors.
 
 ## Removing errors
 
@@ -338,8 +239,6 @@ replace_errors(
              )
 )
 ```
-
-<!--
 
 ## Assignment
 
