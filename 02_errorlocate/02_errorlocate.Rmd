@@ -79,7 +79,22 @@ knitr::kable(data.frame(age=3, married=TRUE, attends="kindergarten"))
 
 Which field or fields would you change?
 
-## Data 2
+## Assignment
+
+Use `validate` to check the data and find the variable that is incorrect.
+
+```{r, eval=FALSE}
+if (married == TRUE ) age >= 16
+if (attends == "kindergarten") age <= 6
+```
+
+### Data
+
+```{r, echo=FALSE, eval=TRUE}
+knitr::kable(data.frame(age=3, married=TRUE, attends="kindergarten"))
+```
+
+## Data shoot-out
 
 ```{r, eval=FALSE}
 age >= 0, 
@@ -95,12 +110,7 @@ knitr::kable(data.frame(age = 10, driver_license = TRUE))
 
 Which field or fields would you change?
 
-
-## Assignment
-
-Use `validate` to check the data and find the variable that is incorrect.
-
-## Data 2
+## Data shoot-out
 
 ```{r, eval=FALSE}
 age >= 0, 
@@ -242,24 +252,22 @@ replace_errors(
 
 ## Assignment
 
-a) Use the data set `retailers` from package `validate`.
-b) Use validate to find out which records are `faulty` using the rule set
+Use the data set `retailers` from package `validate`.
+
+a) Use validate to find out which records are `faulty` using the rule set
 
 ```{r, echo = TRUE, eval=FALSE}
-rules <- validator(
-  to_pos = turnover >= 0
-  , or_pos = other.rev >= 0
-  , balance = turnover + other.rev == total.rev)
-
+to_pos = turnover >= 0
+or_pos = other.rev >= 0
+balance = turnover + other.rev == total.rev
 ```
 
-c) use `locate_errors` to find some errors.
-d) use `replace_errors` to "fix" the data set.
+b) use `locate_errors` to find some errors.
+c) use `replace_errors` to "fix" the data set.
 
 ## 
 
 ```{r, eval = TRUE}
-
 data(retailers, package="validate")
 retailers <- retailers[c("other.rev", "total.rev", "turnover")]
 rules <- validator(
@@ -267,7 +275,11 @@ rules <- validator(
   , or_pos = other.rev >= 0
   , balance = turnover + other.rev == total.rev)
 confront(retailers, rules)
+```
 
+## 
+
+```{r, eval = TRUE}
 errors <- locate_errors(retailers, rules)$errors
 row_contains_error <- apply(errors, 1, any)
 w <- which(row_contains_error)
