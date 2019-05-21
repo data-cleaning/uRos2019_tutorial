@@ -43,7 +43,7 @@ if (drivers_licence == TRUE) age >= 18
 ### Data
 
 ```{r, echo=FALSE}
-knitr::kable(data.frame(age=10,drivers_licence=TRUE))
+knitr::kable(data.frame(age=150,drivers_licence=TRUE))
 ```
 
 ### Question:
